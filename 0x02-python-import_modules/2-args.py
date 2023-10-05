@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 import sys
-
 i = 1
 sys.argv.pop(0)
 l = len(sys.argv)
-
 if __name__ == '__main__':
     if l == 0:
         print('0 arguments.')
