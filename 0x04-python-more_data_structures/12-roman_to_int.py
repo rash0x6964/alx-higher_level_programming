@@ -12,4 +12,3 @@ def roman_to_int(roman_string):
             res += roman[n]
         prev_res = roman[n]
     return res
-    
