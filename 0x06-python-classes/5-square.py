@@ -7,7 +7,6 @@ class Square:
 
     def __init__(self, size=0):
         '''__init__ intialise the attribute'''
-
         if type(size) is not int:
             raise TypeError("size must be an integer")
         elif size < 0:
@@ -18,13 +17,11 @@ class Square:
     @property
     def size(self):
         '''property to retrieve the value'''
-
         return self.__size
 
     @size.setter
     def size(self, value):
         '''property setter to set the value'''
-
         if type(value) is not int:
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -34,12 +31,9 @@ class Square:
 
     def area(self):
         '''instance method that calcul the area square'''
-
         return self.__size ** 2
 
     def my_print(self):
-	'''method that prints in stdout the square with the character #'''
-
         if self.__size == 0:
             print('')
         for i in range(self.__size):
