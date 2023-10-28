@@ -1,0 +1,42 @@
+
+The ``3-say_my_name`` module
+======================
+
+Using ``say_my_name``
+-------------------
+
+This is an example text file in reStructuredText format.  First import
+``say_my_name`` from the ``3-say_my_name`` module:
+
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Now use it:
+
+	>>> say_my_name("Rashid", "Unknown")
+	My name is Rashid Unknown
+
+	>>> say_my_name("Cornelius Maxwell", "Jones II")
+	My name is Cornelius Maxwell Jones II
+
+	>>> say_my_name("Rashid")
+	My name is Rashid 
+
+	>>> say_my_name(6, "James")
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+	>>> say_my_name("LeBron", ["Cavs", "Lakers", "Heat"])
+	Traceback (most recent call last):
+	TypeError: last_name must be a string
+
+	>>> say_my_name({"LeBron": 6, "James": 23}, 7.7)
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+	>>> say_my_name(None)
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+	>>> say_my_name()
+	Traceback (most recent call last):
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
