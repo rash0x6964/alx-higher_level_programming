@@ -36,4 +36,4 @@ class Rectangle(BaseGeometry):
         Return:
             string ([Rectangle] <width>/<height>)
         """
-        return "[{}] {}/{}".format(type(self).__name__, self.__width, self.__height)
+        return f"[{type(self).__name__}] {self.__width}/{self.__height}"
