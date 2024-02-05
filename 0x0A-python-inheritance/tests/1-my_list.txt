@@ -1,0 +1,14 @@
+The ```1-my_list`` module
+======================
+
+Using ``MyList``
+-------------------
+
+This is an example text file in reStructuredText format.  First import
+``MyList`` from the ``1-my_list`` module:
+
+    >>> from 1-my_list import MyList
+
+Now use it:
+
+    >>> 
