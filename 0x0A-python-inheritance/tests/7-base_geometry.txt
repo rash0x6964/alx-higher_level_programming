@@ -49,3 +49,33 @@ Now use it:
     ... except Exception as e:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [TypeError] float_value must be an integer
+
+    >>> try:
+    ...     bg.area(7)
+    ... except Exception as ex:
+    ...     print('[{}] {}'.format(ex.__class__.__name__, ex.args[0]))
+    [TypeError] area() takes 1 positional argument but 2 were given
+
+    >>> try:
+    ...     bg.area(None)
+    ... except Exception as ex:
+    ...     print('[{}] {}'.format(ex.__class__.__name__, ex.args[0]))
+    [TypeError] area() takes 1 positional argument but 2 were given
+
+    >>> try:
+    ...     bg.integer_validator('size', None)
+    ... except Exception as ex:
+    ...     print('[{}] {}'.format(ex.__class__.__name__, ex.args[0]))
+    [TypeError] size must be an integer
+
+    >>> try:
+    ...     bg.integer_validator('foo', [])
+    ... except Exception as ex:
+    ...     print('[{}] {}'.format(ex.__class__.__name__, ex.args[0]))
+    [TypeError] foo must be an integer
+
+    >>> try:
+    ...     bg.integer_validator('angle', complex(2, 3))
+    ... except Exception as ex:
+    ...     print('[{}] {}'.format(ex.__class__.__name__, ex.args[0]))
+    [TypeError] angle must be an integer
