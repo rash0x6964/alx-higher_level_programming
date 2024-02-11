@@ -39,3 +39,19 @@ class Base:
 
         with open(f"{cls.__name__}.json", mode="w", encoding="utf-8") as f:
             f.write(Base.to_json_string(res))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Convert JSON string to an object
+
+        Args:
+            my_str: is a string representing a list
+                    of dictionaries
+
+        Return:
+            return an empty list
+            or list represented by json_string
+        """
+        if json_string is None or json_string == "":
+            return []
+        return json.loads(json_string)
