@@ -4,9 +4,11 @@ from models.square import Square
 from unittest.mock import patch
 from io import StringIO
 
+
 class testSquare(unittest.TestCase):
 
     def test_square_init(self):
+        """test init"""
         with self.assertRaises(TypeError):
             Square("2")
         with self.assertRaises(ValueError):
@@ -19,6 +21,7 @@ class testSquare(unittest.TestCase):
             Square(10, 2, -1)
 
     def test_area(self):
+        """test area"""
         r1 = Square(5)
         self.assertEqual(r1.area(), 25)
         r2 = Square(2, 2)
@@ -28,12 +31,14 @@ class testSquare(unittest.TestCase):
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_display(self, stream):
+        """test display"""
         r1 = Square(5)
         r1.display()
         expected_output = "#####\n#####\n#####\n#####\n#####\n"
         self.assertEqual(stream.getvalue(), expected_output)
 
     def test_size_attribute(self):
+        """test attribute"""
         s1 = Square(5, 0, 0, 16)
         self.assertEqual(str(s1), "[Square] (16) 0/0 - 5")
         self.assertEqual(s1.size, 5)
@@ -47,6 +52,7 @@ class testSquare(unittest.TestCase):
             Square(-1)
 
     def test_update(self):
+        """test update"""
         r1 = Square(5, 0, 0, 19)
         self.assertEqual(str(r1), "[Square] (19) 0/0 - 5")
         r1.update(10)
@@ -65,6 +71,7 @@ class testSquare(unittest.TestCase):
         self.assertEqual(str(r1), "[Square] (89) 12/1 - 7")
 
     def test_to_dictionary(self):
+        """test conversion to dictionary"""
         s1 = Square(10, 2, 1, 1)
         s1_dictionary = s1.to_dictionary()
         self.assertEqual(s1_dictionary, {'id': 1, 'x': 2, 'size': 10, 'y': 1})
@@ -72,7 +79,6 @@ class testSquare(unittest.TestCase):
         s2 = Square(1, 1)
         s2.update(**s1_dictionary)
         self.assertNotEqual(s1, s2)
-
 
 
 if __name__ == "__main__":

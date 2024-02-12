@@ -8,6 +8,7 @@ from io import StringIO
 class testRectangle(unittest.TestCase):
 
     def test_rectangle_init(self):
+        """test init"""
         with self.assertRaises(TypeError):
             Rectangle(10, "2")
         with self.assertRaises(ValueError):
@@ -20,6 +21,7 @@ class testRectangle(unittest.TestCase):
             Rectangle(10, 2, 3, -1)
 
     def test_area(self):
+        """test area"""
         r1 = Rectangle(3, 2)
         self.assertEqual(r1.area(), 6)
         r2 = Rectangle(2, 10)
@@ -29,12 +31,14 @@ class testRectangle(unittest.TestCase):
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_display(self, stream):
+        """test display with out position"""
         r1 = Rectangle(4, 6)
         r1.display()
         expected_output = "####\n####\n####\n####\n####\n####\n"
         self.assertEqual(stream.getvalue(), expected_output)
 
     def test___str__(self):
+        """test str()"""
         r1 = Rectangle(4, 6, 2, 1, 12)
         self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
         r2 = Rectangle(5, 5, 1, 0, 4)
@@ -42,12 +46,14 @@ class testRectangle(unittest.TestCase):
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_display_positions(self, stream):
+        """test display with the position"""
         r1 = Rectangle(2, 3, 2, 2)
         r1.display()
         expected_output = "\n\n  ##\n  ##\n  ##\n"
         self.assertEqual(stream.getvalue(), expected_output)
 
     def test_update(self):
+        """tests update"""
         r1 = Rectangle(10, 10, 10, 10, 11)
         self.assertEqual(str(r1), "[Rectangle] (11) 10/10 - 10/10")
         r1.update(89)
@@ -70,13 +76,18 @@ class testRectangle(unittest.TestCase):
         self.assertEqual(str(r1), "[Rectangle] (89) 1/3 - 4/2")
 
     def test_to_dictionary(self):
+        """test conversion to dictionary"""
         r1 = Rectangle(10, 2, 1, 9, 1)
         r1_dictionary = r1.to_dictionary()
-        self.assertEqual(r1_dictionary, {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10})
+        self.assertEqual(
+            r1_dictionary,
+            {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        )
         self.assertEqual(type(r1_dictionary), dict)
         r2 = Rectangle(1, 1)
         r2.update(**r1_dictionary)
         self.assertNotEqual(r1, r2)
+
 
 if __name__ == "__main__":
     unittest.main()
