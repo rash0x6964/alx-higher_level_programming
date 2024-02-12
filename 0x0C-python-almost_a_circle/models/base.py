@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Define class Base"""
 import json
+import turtle
 
 
 class Base:
@@ -17,7 +18,7 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """Create JSON string representation of list_dictionaries"""
-        if list_dictionaries is None or list_dictionaries == []:
+        if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
         return json.dumps(list_dictionaries)
 
@@ -83,3 +84,40 @@ class Base:
         for obj in tmp_list:
             list_of_instance.append(cls.create(**obj))
         return list_of_instance
+
+
+    def draw(list_rectangles, list_squares):
+        screen = turtle.Screen()
+        screen.setup(800, 600)
+        screen.title("Rectangles and Squares")
+
+        # Initialize turtle
+        pen = turtle.Turtle()
+        pen.speed(0)
+        pen.penup()
+
+        for rect in list_rectangles:
+            pen.goto(rect.x, rect.y)
+            pen.pendown()
+            pen.color("blue")
+            pen.begin_fill()
+            for _ in range(2):
+                pen.forward(rect.width)
+                pen.left(90)
+                pen.forward(rect.height)
+                pen.left(90)
+            pen.end_fill()
+            pen.penup()
+
+        for square in list_squares:
+            pen.goto(square.x, square.y)
+            pen.pendown()
+            pen.color("red")
+            pen.begin_fill()
+            for _ in range(4):
+                pen.forward(square.size)
+                pen.left(90)
+            pen.end_fill()
+            pen.penup()
+
+        screen.mainloop()

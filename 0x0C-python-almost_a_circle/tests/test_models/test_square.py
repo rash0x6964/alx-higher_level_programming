@@ -34,7 +34,7 @@ class testSquare(unittest.TestCase):
         self.assertEqual(stream.getvalue(), expected_output)
 
     def test_size_attribute(self):
-        s1 = Square(5)
+        s1 = Square(5, 0, 0, 16)
         self.assertEqual(str(s1), "[Square] (16) 0/0 - 5")
         self.assertEqual(s1.size, 5)
         s1.size = 10
@@ -47,7 +47,7 @@ class testSquare(unittest.TestCase):
             Square(-1)
 
     def test_update(self):
-        r1 = Square(5)
+        r1 = Square(5, 0, 0, 19)
         self.assertEqual(str(r1), "[Square] (19) 0/0 - 5")
         r1.update(10)
         self.assertEqual(str(r1), "[Square] (10) 0/0 - 5")
@@ -63,6 +63,17 @@ class testSquare(unittest.TestCase):
         self.assertEqual(str(r1), "[Square] (1) 12/1 - 7")
         r1.update(size=7, id=89, y=1)
         self.assertEqual(str(r1), "[Square] (89) 12/1 - 7")
+
+    def test_to_dictionary(self):
+        s1 = Square(10, 2, 1, 1)
+        s1_dictionary = s1.to_dictionary()
+        self.assertEqual(s1_dictionary, {'id': 1, 'x': 2, 'size': 10, 'y': 1})
+        self.assertEqual(type(s1_dictionary), dict)
+        s2 = Square(1, 1)
+        s2.update(**s1_dictionary)
+        self.assertNotEqual(s1, s2)
+
+
 
 if __name__ == "__main__":
     unittest.main()
