@@ -85,7 +85,6 @@ class Base:
             list_of_instance.append(cls.create(**obj))
         return list_of_instance
 
-
     def draw(list_rectangles, list_squares):
         screen = turtle.Screen()
         screen.setup(800, 600)
