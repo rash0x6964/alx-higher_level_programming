@@ -37,7 +37,7 @@ class testRectangle(unittest.TestCase):
     def test___str__(self):
         r1 = Rectangle(4, 6, 2, 1, 12)
         self.assertEqual(str(r1), "[Rectangle] (12) 2/1 - 4/6")
-        r2 = Rectangle(5, 5, 1)
+        r2 = Rectangle(5, 5, 1, 0, 4)
         self.assertEqual(str(r2), "[Rectangle] (4) 1/0 - 5/5")
 
     @patch('sys.stdout', new_callable=StringIO)

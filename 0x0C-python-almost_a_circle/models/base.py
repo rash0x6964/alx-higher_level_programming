@@ -2,6 +2,7 @@
 """Define class Base"""
 import json
 import turtle
+import os
 
 
 class Base:
@@ -79,10 +80,11 @@ class Base:
     def load_from_file(cls):
         """Create a list of instances"""
         list_of_instance = []
-        with open(f"{cls.__name__}.json", mode="r", encoding="utf-8") as f:
-            tmp_list = Base.from_json_string(f.read())
-        for obj in tmp_list:
-            list_of_instance.append(cls.create(**obj))
+        if os.path.exists(f"{cls.__name__}.json"):
+            with open(f"{cls.__name__}.json", mode="r", encoding="utf-8") as f:
+                tmp_list = Base.from_json_string(f.read())
+            for obj in tmp_list:
+                list_of_instance.append(cls.create(**obj))
         return list_of_instance
 
     @staticmethod
