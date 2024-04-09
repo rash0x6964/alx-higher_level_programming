@@ -1,4 +1,5 @@
 #!/usr/bin/node
-myVar = 89;
-require('./100-let_me_const')
-console.log(myVar);
+const addMeMaybe = require('./102-add_me_maybe').addMeMaybe;
+addMeMaybe(4, function (nb) {
+  console.log('New value: ' + nb);
+});
