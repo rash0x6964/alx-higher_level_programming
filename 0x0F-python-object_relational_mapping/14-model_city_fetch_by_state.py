@@ -18,6 +18,6 @@ if __name__ == "__main__":
     res = session.query(State.name, City.id, City.name).join(
         City, State.id == City.state_id
     ).all()
-    
+
     for col in res:
         print("{}: ({}) {}".format(col[0], col[1], col[2]))

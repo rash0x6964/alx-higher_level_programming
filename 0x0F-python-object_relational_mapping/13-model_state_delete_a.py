@@ -15,7 +15,7 @@ if __name__ == "__main__":
     ))
 
     session = Session(bind=engine)
-    
+
     res = session.query(State).filter(State.name.contains('a'))
     for col in res:
         session.delete(col)
